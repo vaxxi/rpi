@@ -1,9 +1,19 @@
 # rpi
-Code for Raspberry Pi add-on boards from bitwizard.nl
+# Code for Raspberry Pi add-on boards from bitwizard.nl
 
-rpi_ui
+You need to have the [wiringPi library](http://wiringpi.com/) installed (no reinventing the wheel).
 
-bigrelay
+Clone the repo, run `make`.
+
+## rpi_ui
+
+[Board details](http://bitwizard.nl/wiki/index.php/User_Interface)
+
+Sample code in `rpi_ui.c`.
+
+## bigrelay
+
+[Board details](http://bitwizard.nl/wiki/index.php/Relay)
 
 
 
