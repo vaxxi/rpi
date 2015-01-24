@@ -113,3 +113,25 @@ if (DEBUG & 1) {
 wiringPiSPIDataRW(CHAN,cmd,ARRAY_SIZE(p));
 }
 
+
+void lcd_put_string2(unsigned char *c) {
+
+if (DEBUG & 1) {
+  printf("%s %d\n",c,strlen(c));
+    }
+unsigned char cmd[] = {LCD,0x00};
+int i;
+char *p = malloc(sizeof(char) * (strlen(c) + 2));
+memcpy(p,cmd,2 * sizeof(char));
+memcpy(p + 2 * sizeof(char),c,strlen(c));
+    
+if (DEBUG & 1) {
+  printf("Array (%d): ",strlen(p));
+  for (i=0;i<strlen(c)+2;i++)
+    printf("%02X ",p[i]);
+    printf(" end\n");
+  }
+
+wiringPiSPIDataRW(CHAN,p,strlen(c)+2);
+}
+              
