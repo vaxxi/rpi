@@ -36,8 +36,8 @@ lcd_setup();
 lcd_clr_scr();
 
 
-for (i=0;i<101;i+=10) {
-  for (j=0;j<101;j+=10) {
+for (i=0;i<151;i+=50) {
+  for (j=0;j<151;j+=50) {
   usleep(500000);
   sprintf(contrast_v,"Contrast: %d\0", i);
   sprintf(bright_v,"Brightness: %d\0", j);
@@ -49,8 +49,11 @@ for (i=0;i<101;i+=10) {
   lcd_brightness_write(j);
   }
   lcd_clr_scr();
+
 }
 
+lcd_contrast_write(110);
+lcd_brightness_write(220);
 
 // go through each LCD character and print a character
 for (i=1;i<3;i++)
@@ -59,8 +62,6 @@ for (i=1;i<3;i++)
     lcd_cursor_move(i,j);
     lcd_put_char(lcd_text[(i-1)*16+j-1]);     
   }
-
-lcd_clr_scr();
 
   
 }
