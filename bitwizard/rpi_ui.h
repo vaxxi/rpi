@@ -10,6 +10,7 @@
 #include <string.h>
 
 #define ARRAY_SIZE(array) sizeof(array)/sizeof(array[0])
+// CHANGEME: set DEBUG = 1 for additional debug information
 #define DEBUG 0
 // CHANGEME: change the rpi_ui SPI address below with your board's address
 #define LCD 0x94
@@ -86,7 +87,7 @@ if (DEBUG & 1) {
 wiringPiSPIDataRW(CHAN,cmd,ARRAY_SIZE(cmd));
 }
 
-void lcd_clr_src() {
+void lcd_clr_scr() {
 unsigned char cmd[] = {LCD,0x10,0x00};
 if (DEBUG & 1) {
   printf("Clearing screen\n");
@@ -113,5 +114,7 @@ if (DEBUG & 1) {
   }
 
 wiringPiSPIDataRW(CHAN,p,strlen(c)+2);
+free(p);
+p=NULL;
 }
               

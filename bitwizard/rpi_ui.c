@@ -22,7 +22,9 @@ void main() {
 
 int i=0,j=0;
 char lcd_text[32];
-char middle_text[14]="Lily was here";
+
+char contrast_v[16];
+char bright_v[16];
 
 // generate a random string to print
 rand_str(lcd_text,ARRAY_SIZE(lcd_text));
@@ -31,18 +33,24 @@ rand_str(lcd_text,ARRAY_SIZE(lcd_text));
 lcd_setup();
 
 // clear the screen
-lcd_clr_src();
+lcd_clr_scr();
 
-// change brightness two times, sleep 2 seconds in between
-lcd_brightness_write(25);
-sleep(1);
-lcd_brightness_write(50);
-sleep(1);
-// change contrast two times, sleep 2 seconds in between
-lcd_contrast_write(25);
-sleep(1);
-lcd_contrast_write(50);
-sleep(1);
+
+for (i=0;i<101;i+=10) {
+  for (j=0;j<101;j+=10) {
+  usleep(500000);
+  sprintf(contrast_v,"Contrast: %d\0", i);
+  sprintf(bright_v,"Brightness: %d\0", j);
+  lcd_cursor_move(1,2);
+  lcd_put_string(contrast_v);
+  lcd_cursor_move(2,2);
+  lcd_put_string(bright_v);
+  lcd_contrast_write(i);
+  lcd_brightness_write(j);
+  }
+  lcd_clr_scr();
+}
+
 
 // go through each LCD character and print a character
 for (i=1;i<3;i++)
@@ -52,9 +60,7 @@ for (i=1;i<3;i++)
     lcd_put_char(lcd_text[(i-1)*16+j-1]);     
   }
 
-lcd_clr_src();
+lcd_clr_scr();
 
-lcd_cursor_move(2,2);
-lcd_put_string(middle_text);
   
 }
