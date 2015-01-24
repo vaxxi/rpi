@@ -1,3 +1,7 @@
+//
+// header file for using a bitwizard.nl rpi_ui board in SPI mode
+//
+
 #include <wiringPiSPI.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -7,8 +11,9 @@
 
 #define ARRAY_SIZE(array) sizeof(array)/sizeof(array[0])
 #define DEBUG 0
+// CHANGEME: change the rpi_ui SPI address below with your board's address
 #define LCD 0x94
-
+// CHANGEME: defaulting to SPI port 0, change it if you're using SPI port 1
 #define CHAN 0
 
 
