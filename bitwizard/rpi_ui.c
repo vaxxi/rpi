@@ -22,6 +22,7 @@ void main() {
 
 int i=0,j=0;
 char lcd_text[32];
+char middle_text[14]="Lily was here";
 
 // generate a random string to print
 rand_str(lcd_text,ARRAY_SIZE(lcd_text));
@@ -50,5 +51,10 @@ for (i=1;i<3;i++)
     lcd_cursor_move(i,j);
     lcd_put_char(lcd_text[(i-1)*16+j-1]);     
   }
+
+lcd_clr_src();
+
+lcd_cursor_move(2,2);
+lcd_put_string(middle_text);
   
 }
