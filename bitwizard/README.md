@@ -1,4 +1,3 @@
-# rpi
 # Code for Raspberry Pi add-on boards from bitwizard.nl
 
 You need to have the [wiringPi library](http://wiringpi.com/) installed (no reinventing the wheel).
