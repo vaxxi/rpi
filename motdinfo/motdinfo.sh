@@ -1,9 +1,9 @@
 #!/bin/bash
-
-ANSI=1
+# Raspberry Pi login information script - https://github.com/vaxxi/rpi/tree/master/motdinfo
 
 # declare color codes
 COLOR_WHITE="\033[1;37m"
+COLOR_RED="\033[1;31m"
 COLOR_RESET="\033[0m"
 
 # declare Raspberry Pi versions
@@ -36,22 +36,30 @@ MEM_USED=`free -m|grep Mem:|awk '{split($0,a," "); print a[3];}'`
 MEM_PERCENTAGE=`awk -v t1=$MEM_TOTAL -v t2=$MEM_USED 'BEGIN{printf "%.0f", (t1-t2)/t2 * 100}'`
 SWAP_TOTAL=`free -m|grep Swap:|awk '{split($0,a," "); print a[2];}'`
 SWAP_USED=`free -m|grep Swap:|awk '{split($0,a," "); print a[3];}'`
+if [ $SWAP_TOTAL -ne 0 ]; then
 SWAP_PERCENTAGE=`awk -v t1=$SWAP_TOTAL -v t2=$SWAP_USED 'BEGIN{printf "%.0f", (t1-t2)/t2 * 100}'`
+fi
+ETH0=`ip a|grep inet|grep eth0|awk '{split($0,a," "); print a[2];}'`
+WLAN0=`ip a|grep inet|grep wlan0|awk '{split($0,a," "); print a[2];}'`
 
-# echo information
+# echo first line
 echo -e $COLOR_RESET ${RPI[${CPU_CODE}]} $COLOR_RESET
 echo "================================================================================"
-echo -e " Welcome to"$COLOR_WHITE $HOSTNAME $COLOR_RESET
+echo -e " Welcome" $OWNER"! it's me,"$COLOR_WHITE $HOSTNAME $COLOR_RESET
 echo -e " Uptime:"$COLOR_WHITE $UPTIME $COLOR_RESET
 echo -e " Memory:"$COLOR_WHITE $MEM_USED "MB out of" $MEM_TOTAL "MB used (" $MEM_PERCENTAGE "% free )" $COLOR_RESET
 if [ $SWAP_TOTAL -eq 0 ]; then
-        echo -e " Swap:"$COLOR_WHITE "not used" $COLOR_RESET
+	echo -e " Swap:"$COLOR_WHITE "not used" $COLOR_RESET
 else
 	echo -e " Swap:"$COLOR_WHITE $SWAP_USED "MB out of" $SWAP_TOTAL "MB used (" $SWAP_PERCENTAGE "% free )" $COLOR_RESET
 fi
-echo "================================================================================"
-                
-# echo reset terminal and close.
+echo -ne " Interfaces:"
+if [ -n "$ETH0" ]; then
+	echo -ne $COLOR_WHITE "eth0" $ETH0
+fi
+if [ -n "$WLAN0" ]; then
+	echo -ne $COLOR_WHITE "wlan0" $WLAN0
+fi
 echo -e $COLOR_RESET
-exit
-                
+echo "================================================================================"
+
