@@ -2,16 +2,16 @@ This script can be called by your .bash_profile script to show Raspberry Pi
 information when logging in.
 
 To install, login to your Raspberry Pi and issue the following commands:
-"""
+```
 cd ~
 wget https://raw.githubusercontent.com/vaxxi/rpi/master/motdinfo/motdinfo.sh
 chmod +x motdinfo.sh
 echo "`pwd`/motdinfo.sh" >> .bash_profile
-"""
+```
 
 Sample output:
 
-"""
+```
  Raspberry Pi Model B	Released Q3 2012	PCB Rev. 2.0	256 MB	Sony 
 ================================================================================
  Welcome ! it's me, pi02 
@@ -20,4 +20,4 @@ Sample output:
  Swap: not used 
  Interfaces: wlan0 192.168.1.29/24
 ================================================================================
-"""
+```
