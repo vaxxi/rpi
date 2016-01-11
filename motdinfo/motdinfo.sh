@@ -33,11 +33,11 @@ HOSTNAME=`hostname -s`
 UPTIME=`uptime`
 MEM_TOTAL=`free -m|grep Mem:|awk '{split($0,a," "); print a[2];}'`
 MEM_USED=`free -m|grep Mem:|awk '{split($0,a," "); print a[3];}'`
-MEM_PERCENTAGE=`awk -v t1=$MEM_TOTAL -v t2=$MEM_USED 'BEGIN{printf "%.0f", (t1-t2)/t2 * 100}'`
+MEM_PERCENTAGE=`awk -v t1=$MEM_TOTAL -v t2=$MEM_USED 'BEGIN{printf "%.0f", (t1-t2)/t1 * 100}'`
 SWAP_TOTAL=`free -m|grep Swap:|awk '{split($0,a," "); print a[2];}'`
 SWAP_USED=`free -m|grep Swap:|awk '{split($0,a," "); print a[3];}'`
 if [ $SWAP_TOTAL -ne 0 ]; then
-SWAP_PERCENTAGE=`awk -v t1=$SWAP_TOTAL -v t2=$SWAP_USED 'BEGIN{printf "%.0f", (t1-t2)/t2 * 100}'`
+SWAP_PERCENTAGE=`awk -v t1=$SWAP_TOTAL -v t2=$SWAP_USED 'BEGIN{printf "%.0f", (t1-t2)/t1 * 100}'`
 fi
 ETH0=`ip a|grep inet|grep eth0|awk '{split($0,a," "); print a[2];}'`
 WLAN0=`ip a|grep inet|grep wlan0|awk '{split($0,a," "); print a[2];}'`
