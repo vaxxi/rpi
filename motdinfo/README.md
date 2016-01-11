@@ -1,4 +1,4 @@
-This script can be called by your .bash_profile script to show Raspberry Pi 
+This script can be called by your `.bash_profile` script to show Raspberry Pi 
 information when logging in.
 
 To install, login to your Raspberry Pi and issue the following commands:
