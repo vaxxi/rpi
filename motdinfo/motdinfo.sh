@@ -25,7 +25,9 @@ RPI[000e]="Raspberry Pi Model B\tReleased Q4 2014\tPCB Rev. 2.0\t512 MB\tSony"
 RPI[000f]="Raspberry Pi Model B\tReleased Q4 2012\tPCB Rev. 2.0\t512 MB\tQisda"
 RPI[a01041]="Raspberry Pi Model 2 B\tReleased Q1 2015\tPCB Rev. 1.1\t1 GB Sony"
 RPI[a21041]="Raspberry Pi Model 2 B\tReleased Q1 2015\tPCB Rev. 1.1\t1 GB Embest"
-RPI[a900092]="Raspberry Pi Model Zero\tReleased Q4 2015\tPCB Rev. 1.2\t512 MB\tSony"   
+RPI[a900092]="Raspberry Pi Model Zero\tReleased Q4 2015\tPCB Rev. 1.2\t512 MB\tSony"
+RPI[a02082]="Raspberry Pi Model 3 B\tReleased Q1 2016\tPCB Rev. 1.2\t1 GB\tSony"
+RPI[a22082]="Raspberry Pi Model 3 B\tReleased Q1 2016\tPCB Rev. 1.2\t512 MB\tEmbest"
 
 # get RPI details
 CPU_CODE=`cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/1000//'`
